@@ -4,33 +4,12 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include <algorithm>
+#include "shared.h"
 
 namespace Codevent1
 {
-	std::vector<int> getData(const std::string& filePath)
-	{
-		std::vector<int> nums;
-		std::ifstream f;
-		f.open(filePath);
-		if (!f.good()) throw std::runtime_error("Error opening file " + filePath);
-		std::string line;
-		while (f >> line)
-		{
-			try
-			{
-				nums.push_back(stoi(line));
-			}
-			catch (...)
-			{
-				f.close();
-				throw;
-			}
-		}
-		f.close();
-		return nums;
-	}
-
-	std::vector<int> getSumPair(std::vector<int>& nums, int target)
+	std::vector<int> getSumPair(const std::vector<int>& nums, int target)
 	{
 		for (int i : nums)
 			for (int j : nums)
@@ -53,7 +32,9 @@ int main()
 {
 	try
 	{
-		std::vector<int> data = Codevent1::getData("input.txt");
+		std::vector<std::string> lines = Shared::readLines("input.txt");
+		std::vector<int> data;
+		for (std::string& l : lines) data.push_back(stoi(l));
 		std::vector<int> sumTo2020 = Codevent1::getSumPair(data, 2020);
 		int a = sumTo2020[0];
 		int b = sumTo2020[1];
