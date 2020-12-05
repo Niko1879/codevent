@@ -41,4 +41,13 @@ namespace Shared
 		strs.push_back(str.substr(last, next - last));
 		return strs;
 	}
+
+	bool isInteger(const std::string& s)
+	{
+		for (char c : s)
+		{
+			if (!isdigit(c)) return false;
+		}
+		return true;
+	}
 }

@@ -17,7 +17,7 @@ namespace Codevent1
 		return std::vector<int>{-1, -1};
 	}
 
-	std::vector<int> getSumTriple(std::vector<int>& nums, int target)
+	std::vector<int> getSumTriple(const std::vector<int>& nums, int target)
 	{
 		for (int i : nums)
 			for (int j : nums)

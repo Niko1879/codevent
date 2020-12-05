@@ -9,7 +9,7 @@ namespace Codevent3
 	{
 		std::vector<std::vector<bool>> grid;
 
-		size_t getx(size_t x)
+		size_t getx(size_t x) const
 		{
 			while (x >= grid.size()) x -= grid.size();
 			return x;
@@ -27,7 +27,7 @@ namespace Codevent3
 			}
 		}
 
-		bool at(size_t x, size_t y) 
+		bool at(size_t x, size_t y) const
 		{
 			return grid[getx(x)][y]; 
 		}
@@ -37,7 +37,7 @@ namespace Codevent3
 			grid[getx(x)][y] = val;
 		}
 
-		size_t ylength()
+		size_t ylength() const
 		{
 			return grid[0].size();
 		}
@@ -60,6 +60,7 @@ namespace Codevent3
 		return grid;
 	}
 }
+
 
 int main()
 {
