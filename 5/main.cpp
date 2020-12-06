@@ -10,14 +10,10 @@ namespace Codevent5
 		for (char c : str)
 		{
 			if (c == lkey)
-			{
 				max = (max + min) / 2;
-			}
 
 			else if (c == ukey)
-			{
 				min = (max + min + 1) / 2;
-			}
 		}
 
 		if (min == max) return min;
