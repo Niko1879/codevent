@@ -50,4 +50,24 @@ namespace Shared
 		}
 		return true;
 	}
+
+	std::vector<std::vector<std::string>> group(const std::vector<std::string> lines)
+	{
+		std::vector<std::vector<std::string>> g;
+		std::vector<std::string> tmp;
+		for (const std::string& line : lines)
+		{
+			if (line == "")
+			{
+				g.push_back(tmp);
+				tmp.clear();
+			}
+			else
+			{
+				tmp.push_back(line);
+			}
+		}
+		if (!tmp.empty()) g.push_back(tmp);
+		return g;
+	}
 }

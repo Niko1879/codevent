@@ -7,31 +7,11 @@
 namespace Codevent4
 {
 	typedef std::unordered_map<std::string, std::string> passport;
-	typedef std::vector<std::vector<std::string>> grp;
 
 	const std::vector<std::string> requiredFields{"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
 	const std::vector<char> validc{ '0', '1', '2','3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e' ,'f' };
 	const std::vector<std::string> valide{ "amb", "blu", "brn", "gry", "grn", "hzl", "oth" };
 
-	grp group(const std::vector<std::string> lines)
-	{
-		grp g;
-		std::vector<std::string> tmp;
-		for (const std::string& line: lines)
-		{
-			if (line == "")
-			{
-				g.push_back(tmp);
-				tmp.clear();
-			}
-			else
-			{
-				tmp.push_back(line);
-			}
-		}
-		if (!tmp.empty()) g.push_back(tmp);
-		return g;
-	}
 
 	passport parseport(const std::vector<std::string>& data)
 	{
@@ -134,7 +114,7 @@ namespace Codevent4
 int main()
 {
 	std::vector<std::string> lines = Shared::readLines("input.txt");
-	Codevent4::grp g = Codevent4::group(lines);
+	auto g = Shared::group(lines);
 	std::vector<Codevent4::passport> passports;
 	for (const std::vector<std::string>& v: g)
 	{
