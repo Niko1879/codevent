@@ -36,9 +36,10 @@ namespace Shared
 		while ((next = str.find(delim, last)) != std::string::npos)
 		{
 			strs.push_back(str.substr(last, next - last));
-			last = next + 1;
+			last = next + delim.size();
 		}
-		strs.push_back(str.substr(last, next - last));
+		if(last < str.size())
+			strs.push_back(str.substr(last));
 		return strs;
 	}
 
