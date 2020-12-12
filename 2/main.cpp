@@ -2,7 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "shared.h"
+#include <IO.h>
+#include <acstring.h>
 
 namespace Codevent2
 {
@@ -17,12 +18,10 @@ namespace Codevent2
 		char c;
 	};
 
-
-
 	Policy parsePolicy(const std::string& policy)
 	{
-		std::vector<std::string> tokens = Shared::split(policy, "-");
-		std::vector<std::string> tmp = Shared::split(tokens[1], " ");
+		std::vector<std::string> tokens = AcString::split(policy, "-");
+		std::vector<std::string> tmp = AcString::split(tokens[1], " ");
 		tokens[1] = tmp[0];
 		tokens.push_back(tmp[1]);
 
@@ -50,11 +49,11 @@ namespace Codevent2
 
 int main()
 {
-	std::vector<std::string> lines = Shared::readLines("input.txt");
+	std::vector<std::string> lines = IO::readLines("input.txt");
 	int numValidPasswords = 0;
 	for (const std::string& l : lines)
 	{
-		std::vector<std::string> tokens = Shared::split(l, " ");
+		std::vector<std::string> tokens = AcString::split(l, " ");
 		if (Codevent2::isValidPassword2(tokens[2], tokens[0] + " " + tokens[1]))
 		{
 			numValidPasswords++;

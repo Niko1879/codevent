@@ -1,7 +1,7 @@
-#include "shared.h"
 #include <cassert>
 #include <iostream>
 #include <algorithm>
+#include <IO.h>
 
 namespace Codevent5
 {
@@ -66,7 +66,7 @@ namespace Codevent5
 
 int main()
 {
-	auto input = Shared::readLines("input.txt");
+	auto input = IO::readLines("input.txt");
 	Codevent5::question1(input);
 	Codevent5::question2(input);
 	return 0;

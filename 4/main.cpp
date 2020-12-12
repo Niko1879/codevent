@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "shared.h"
+#include <IO.h>
+#include <acstring.h>
 
 namespace Codevent4
 {
@@ -18,10 +19,10 @@ namespace Codevent4
 		passport p;
 		for (const std::string& line : data)
 		{
-			std::vector<std::string> tokens = Shared::split(line, " ");
+			std::vector<std::string> tokens = AcString::split(line, " ");
 			for (const std::string& t : tokens)
 			{
-				std::vector<std::string> tokens_ = Shared::split(t, ":");
+				std::vector<std::string> tokens_ = AcString::split(t, ":");
 				p.insert(std::make_pair(tokens_[0], tokens_[1]));
 			}
 		}
@@ -41,7 +42,7 @@ namespace Codevent4
 		std::string suffix(h.end() - 2, h.end());
 		std::string prefix(h.begin(), h.end() - 2);
 		
-		if (!Shared::isInteger(prefix)) return false;
+		if (!AcString::isInteger(prefix)) return false;
 
 		if (suffix == "cm") return validateRange(150, 193, stoi(prefix));
 		if (suffix == "in") return validateRange(59, 76, stoi(prefix));
@@ -67,7 +68,7 @@ namespace Codevent4
 
 	bool validatePid(const std::string& h)
 	{
-		return Shared::isInteger(h) && h.length() == 9;
+		return AcString::isInteger(h) && h.length() == 9;
 	}
 
 	bool isValidPassport(const passport& p)
@@ -113,8 +114,8 @@ namespace Codevent4
 
 int main()
 {
-	std::vector<std::string> lines = Shared::readLines("input.txt");
-	auto g = Shared::group(lines);
+	std::vector<std::string> lines = IO::readLines("input.txt");
+	auto g = AcString::group(lines);
 	std::vector<Codevent4::passport> passports;
 	for (const std::vector<std::string>& v: g)
 	{

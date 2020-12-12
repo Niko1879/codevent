@@ -1,55 +1,17 @@
 #include <vector>
 #include <string>
-#include "shared.h"
 #include <iostream>
+#include <IO.h>
+#include <Grid.h>
 
 namespace Codevent3
 {
-	class Grid
+	Dstruct::Grid<bool> parseGrid(const std::string& filepath, char treeInd)
 	{
-		std::vector<std::vector<bool>> grid;
-
-		size_t getx(size_t x) const
-		{
-			while (x >= grid.size()) x -= grid.size();
-			return x;
-		}
-
-	public:
-		Grid(size_t x, size_t y)
-		{
-			for (size_t i = 0; i < x; i++)
-			{
-				std::vector<bool> tmp;
-				for (size_t j = 0; j < y; j++)
-					tmp.push_back(false);
-				grid.push_back(tmp);
-			}
-		}
-
-		bool at(size_t x, size_t y) const
-		{
-			return grid[getx(x)][y]; 
-		}
-
-		void set(size_t x, size_t y, bool val)
-		{
-			grid[getx(x)][y] = val;
-		}
-
-		size_t ylength() const
-		{
-			return grid[0].size();
-		}
-
-	};
-
-	Grid parseGrid(const std::string& filepath, char treeInd)
-	{
-		std::vector<std::string> lines = Shared::readLines(filepath);
+		std::vector<std::string> lines = IO::readLines(filepath);
 		size_t x = lines[0].length();
 		size_t y = lines.size();
-		Grid grid(x, y);
+		Dstruct::Grid<bool> grid(x, y);
 		for (size_t i = 0; i < lines.size(); i++)
 		{
 			for (size_t j = 0; j < lines[0].size(); j++)
@@ -61,10 +23,9 @@ namespace Codevent3
 	}
 }
 
-
 int main()
 {
-	Codevent3::Grid g = Codevent3::parseGrid("input.txt", '#');
+	Dstruct::Grid<bool> g = Codevent3::parseGrid("input.txt", '#');
 	int treeCount = 0;
 	for (size_t i = 1; i <= g.ylength()/2; i++)
 	{

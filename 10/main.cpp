@@ -1,7 +1,7 @@
-#include "shared.h"
 #include <algorithm>
 #include <unordered_map>
 #include <iostream>
+#include <IO.h>
 
 namespace Codevent10
 {
@@ -92,7 +92,7 @@ namespace Codevent10
 
 int main()
 {
-	std::vector<std::string> input = Shared::readLines("input.txt");
+	std::vector<std::string> input = IO::readLines("input.txt");
 	std::vector<int> nums;
 	for (const std::string& line : input)
 		nums.push_back(stoi(line));

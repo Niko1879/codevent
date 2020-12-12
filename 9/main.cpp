@@ -1,8 +1,9 @@
-#include "shared.h"
 #include <algorithm>
 #include <iostream>
 #include <numeric>
 #include <deque>
+#include <IO.h>
+#include <acmath.h>
 
 namespace Codevent9
 {
@@ -11,7 +12,7 @@ namespace Codevent9
 		for (size_t i = 0; i < nums.size() - preambleLength; ++i)
 		{
 			std::vector<long long> sub(nums.begin() + i, nums.begin() + i + preambleLength);
-			std::vector<long long> sumComb = Shared::sumCombination(sub, 2, nums[i + preambleLength]);
+			std::vector<long long> sumComb = AcMath::sumCombination(sub, 2, nums[i + preambleLength]);
 
 			if (sumComb.empty())
 				return nums[i + preambleLength];
@@ -43,7 +44,7 @@ namespace Codevent9
 
 int main()
 {
-	std::vector<std::string> input = Shared::readLines("input.txt");
+	std::vector<std::string> input = IO::readLines("input.txt");
 	std::vector<long long> nums;
 
 	for (const std::string& line : input)

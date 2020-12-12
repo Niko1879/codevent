@@ -1,8 +1,9 @@
-#include "shared.h"
 #include <vector>
 #include <iostream>
 #include <numeric>
 #include <algorithm>
+#include <acstring.h>
+#include <IO.h>
 
 namespace Codevent6
 {
@@ -35,7 +36,7 @@ namespace Codevent6
 
 	void question(const std::vector<std::string>& input, size_t (*count)(const std::vector<std::string>&))
 	{
-		auto grps = Shared::group(input);
+		auto grps = AcString::group(input);
 		std::vector<size_t> counts;
 		for (const auto& g : grps)
 			counts.push_back(count(g));
@@ -47,7 +48,7 @@ namespace Codevent6
 
 int main()
 {
-	std::vector<std::string> input = Shared::readLines("input.txt");
+	std::vector<std::string> input = IO::readLines("input.txt");
 	Codevent6::question(input, Codevent6::countAny);
 	Codevent6::question(input, Codevent6::countAll);
 
