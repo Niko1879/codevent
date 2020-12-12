@@ -27,9 +27,9 @@ int main()
 {
 	Dstruct::Grid<bool> g = Codevent3::parseGrid("input.txt", '#');
 	int treeCount = 0;
-	for (size_t i = 1; i <= g.ylength()/2; i++)
+	for (size_t i = 1; i < g.ylength(); i++)
 	{
-		if (g.at(i, 2*i)) treeCount++;
+		if (g.at(3*i, i)) treeCount++;
 	}
 	std::cout << "The number of trees encountered is: " << treeCount;
 }
