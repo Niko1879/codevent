@@ -47,8 +47,6 @@ int main()
 		{
 			inc *= longShuttleNums[index];
 			++index;
-			if (index > longShuttleNums.size())
-				break;
 		}
 	}
 
