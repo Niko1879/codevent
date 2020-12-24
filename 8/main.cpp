@@ -15,7 +15,7 @@ namespace Codevent8
 
 	Instruction parseInstruction(const std::string& input)
 	{
-		std::vector<std::string> toks = Shared::split(input, " ");
+		std::vector<std::string> toks = AcString::split(input, " ");
 		return Instruction(toks[0], stoi(toks[1]));
 	}
 	
@@ -96,7 +96,7 @@ namespace Codevent8
 int main()
 {
 	Codevent8::Console console;
-	std::vector<std::string> input = Shared::readLines("input.txt");
+	std::vector<std::string> input = IO::readLines("input.txt");
 	std::vector<Codevent8::Instruction> instructions;
 	for (const std::string& s : input)
 		instructions.push_back(Codevent8::parseInstruction(s));
